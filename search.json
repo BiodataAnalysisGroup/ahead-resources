@@ -4,7 +4,7 @@
     "href": "qmd/references.html",
     "title": "References",
     "section": "",
-    "text": "About this site\n\n\nWarning: package 'data.table' was built under R version 4.5.2\n\n\nWarning: package 'rjson' was built under R version 4.5.2\n\n\nWarning: package 'reactable' was built under R version 4.5.2\n\n\nWarning in readLines(fls[i]): incomplete final line found on\n'../references/utilization_of_ai_in_clinical_practice.json'"
+    "text": "About this site\n\n\nWarning: package 'data.table' was built under R version 4.5.2\n\n\nWarning: package 'rjson' was built under R version 4.5.2\n\n\nWarning: package 'reactable' was built under R version 4.5.2\n\n\nWarning in readLines(fls[i]): incomplete final line found on\n'../references/ai_cbt_chatbots.json'\n\n\nWarning in readLines(fls[i]): incomplete final line found on\n'../references/theory_of_mind_llms.json'\n\n\nWarning in readLines(fls[i]): incomplete final line found on\n'../references/utilization_of_ai_in_clinical_practice.json'"
   },
   {
     "objectID": "qmd/index.html",
