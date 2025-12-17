@@ -7,9 +7,11 @@ execute:
 About this site
 
 ```{r}
-library(data.table)
-library(rjson)
-library(reactable)
+suppressWarnings({
+  library(data.table)
+  library(rjson)
+  library(reactable)
+})
 
 references_dir <- "../references/"
 
