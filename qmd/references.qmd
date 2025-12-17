@@ -2,16 +2,18 @@
 title: "References"
 execute:
   echo: false
+  warning: false
+  
 ---
 
 About this site
 
 ```{r}
-suppressWarnings({
-  library(data.table)
-  library(rjson)
-  library(reactable)
-})
+
+library(data.table)
+library(rjson)
+library(reactable)
+
 
 references_dir <- "../references/"
 
