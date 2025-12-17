@@ -24,6 +24,8 @@ for(i in seq_along(fls)) {
         paste(collapse = "") |>
         fromJSON()
 
+    json_data$Indicator <- json_data$Indicator |> paste(collapse = ", ")
+
     references_dt[[i]] <- json_data
 
 }
