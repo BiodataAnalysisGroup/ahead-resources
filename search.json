@@ -4,7 +4,7 @@
     "href": "qmd/references.html",
     "title": "References",
     "section": "",
-    "text": "About this site"
+    "text": "About this site\n\n\nWarning: package 'data.table' was built under R version 4.5.2\n\n\nWarning: package 'rjson' was built under R version 4.5.2\n\n\nWarning: package 'reactable' was built under R version 4.5.2"
   },
   {
     "objectID": "qmd/index.html",
@@ -25,6 +25,6 @@
     "href": "qmd/indicators.html",
     "title": "Indicators",
     "section": "",
-    "text": "About this site"
+    "text": "About this site\n\n\nWarning: package 'data.table' was built under R version 4.5.2\n\n\nWarning: package 'rjson' was built under R version 4.5.2\n\n\nWarning: package 'reactable' was built under R version 4.5.2"
   }
 ]
