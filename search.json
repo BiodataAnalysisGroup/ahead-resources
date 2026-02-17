@@ -25,6 +25,6 @@
     "href": "qmd/indicators.html",
     "title": "Indicators",
     "section": "",
-    "text": "About this site\n\n\nWarning: package 'data.table' was built under R version 4.5.2\n\n\nWarning: package 'rjson' was built under R version 4.5.2\n\n\nWarning: package 'reactable' was built under R version 4.5.2"
+    "text": "About this site"
   }
 ]
