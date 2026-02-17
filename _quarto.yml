@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "AHEAD Indicators | References"
+  title: "AHEAD Database"
   navbar:
     background: "#5544cc"
     left:
@@ -15,16 +15,16 @@ website:
   page-footer:
     background: "#5544cc"
     left: |
-      Copyright 2025 Ahead | All Rights Reserved
+      Copyright 2026 Ahead | All Rights Reserved
     right:
-      - href: https://github.com/
+      - href: https://github.com/BiodataAnalysisGroup/ahead-resources
         icon: github
         aria-label: GitHub
-      - href: https://www.linkedin.com/
+      - href: https://www.linkedin.com/company/ahead-project-msca/
         icon: linkedin
         aria-label: LinkedIn
     center: |
-      The research leading to these results has received funding from the Horizon Europe Programme under the Marie Skłodowska-Curie grant agreement No 101183031. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.
+      The research leading to these results has received funding from the Horizon Europe Programme under the Marie Skłodowska-Curie grant agreement No 101183031.
 
 format:
   html:
