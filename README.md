@@ -17,6 +17,8 @@ AHEAD will encourage responsible AI innovation through constant collaboration an
 
 ### For users
 
+#### Copy from template
+
 ### For Developers
 #### Requirements
 
