@@ -13,7 +13,12 @@ The AHEAD project is working to create a transdisciplinary, diverse and global c
 ## Enhancing trasndisciplinary collaboration
 AHEAD will encourage responsible AI innovation through constant collaboration and knowledge exchanges, to continuously meet the demands of the fast-changing AI landscape and ensure that this technology is used to enhance quality healthcare for all.
 
-## Requirements
+## How to contribute
+
+### For users
+
+### For Developers
+#### Requirements
 
 - Install `R`: https://cloud.r-project.org/.
 - Install `RStudio`: https://posit.co/download/rstudio-desktop/.
@@ -22,18 +27,10 @@ AHEAD will encourage responsible AI innovation through constant collaboration an
 ```r
 install.packages(c("data.table", "rjson", "reactable"))
 ```
-
-## Deploy the site locally
+#### Deploy the site locally
 In the `RStudio` terminal run:
 ```r
 quarto render
 quarto preview
 ```
 
-## Commit and push your changes to GitHub
-
-1. Commit and push your changes. Please see here: https://docs.github.com/en/get-started/using-github/github-flow.
-2. Publish to gh-pages branch:
-```r
-quarto publish gh-pages
-```
