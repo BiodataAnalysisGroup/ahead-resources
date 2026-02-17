@@ -1,0 +1,11 @@
+{
+	"name": "Test_1",
+	"abbreviation": "test_1",
+	"alternateName": "",
+	"description": "",
+	"domain": ["Societal"],
+	"keywords": [ "metadata", "fair", "contributors"],
+	"status": "Active",
+	"version": "1.0.0",
+	"created": "2025-11-11"
+}
