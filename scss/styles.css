@@ -6,26 +6,43 @@
   line-height: 1.4;
 }
 
-/* Reactable container */
+/* Give the indicators page more usable horizontal space */
+.quarto-container.page-columns {
+  max-width: 100%;
+}
+
+/* Table wrapper */
 .reactable {
   margin-top: 1.5rem;
   margin-bottom: 2rem;
+  overflow-x: auto;
 }
 
-/* Search and pagination controls */
-.ReactTable .rt-search,
-.reactable input,
-.reactable select {
-  font-family: "Comfortaa", sans-serif;
-}
-
-/* Slightly rounded table */
+/* Rounded outer frame */
 .reactable > div {
-  border-radius: 8px;
-  overflow: hidden;
+  border-radius: 10px;
 }
 
-/* Pagination buttons */
-.reactable .pagination-button {
-  border-radius: 5px;
+/* Keep table headers visible while scrolling */
+.reactable .rt-thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+/* Improve filter fields */
+.reactable input {
+  font-family: "Comfortaa", sans-serif;
+  font-size: 0.8rem;
+  border-radius: 6px;
+}
+
+/* Subtle row separation */
+.reactable .rt-tr-group {
+  border-bottom: 1px solid #eeeef4;
+}
+
+/* Avoid very tall pagination controls */
+.reactable .rt-pagination {
+  font-size: 0.82rem;
 }

@@ -1,5 +1,6 @@
 ---
 title: "Indicators"
+page-layout: full
 execute:
   echo: false
 ---
@@ -46,28 +47,32 @@ reactable(
   searchable = TRUE,
   filterable = TRUE,
   sortable = TRUE,
-  striped = TRUE,
   highlight = TRUE,
-  bordered = FALSE,
+  striped = FALSE,
+  bordered = TRUE,
 
-  defaultPageSize = 10,
-  pageSizeOptions = c(10, 25, 50, 100),
-
+  defaultPageSize = 15,
+  pageSizeOptions = c(10, 15, 25, 50),
   paginationType = "jump",
+
+  fullWidth = TRUE,
+  compact = FALSE,
 
   defaultColDef = colDef(
     resizable = TRUE,
-    minWidth = 120,
+    minWidth = 140,
     headerStyle = list(
-      background = "#5544cc",
-      color = "white",
-      fontWeight = "600",
-      borderBottom = "none"
+      background = "#f4f2ff",
+      color = "#30256f",
+      fontWeight = "700",
+      borderBottom = "3px solid #5544cc",
+      padding = "12px"
     ),
     style = list(
       padding = "12px",
       whiteSpace = "normal",
-      lineHeight = "1.4"
+      lineHeight = "1.45",
+      verticalAlign = "top"
     )
   ),
 
@@ -75,41 +80,57 @@ reactable(
     id = colDef(
       name = "ID",
       width = 70,
-      align = "center"
+      minWidth = 70,
+      align = "center",
+      sticky = "left",
+      headerStyle = list(
+        background = "#5544cc",
+        color = "white",
+        fontWeight = "700",
+        borderBottom = "3px solid #5544cc"
+      ),
+      style = list(
+        background = "white",
+        fontWeight = "700",
+        color = "#5544cc"
+      )
     ),
 
     keywords = colDef(
       name = "Keywords",
-      minWidth = 220,
+      minWidth = 240,
       style = list(
-        color = "#5544cc",
-        fontSize = "0.85rem"
+        fontSize = "0.82rem",
+        color = "#5544cc"
       )
     )
   ),
 
   theme = reactableTheme(
-    borderColor = "#e5e5e5",
-
-    stripedColor = "#f8f7ff",
-    highlightColor = "#eeeaff",
-
+    borderColor = "#dedbea",
+    highlightColor = "#f4f2ff",
     cellPadding = "10px 12px",
 
     style = list(
       fontFamily = "Comfortaa, sans-serif",
-      fontSize = "0.9rem"
+      fontSize = "0.86rem"
     ),
 
     searchInputStyle = list(
-      border = "1px solid #d6d2ee",
-      borderRadius = "6px",
-      padding = "8px 12px"
+      width = "280px",
+      border = "1px solid #c9c3e5",
+      borderRadius = "8px",
+      padding = "9px 12px"
     ),
 
     selectStyle = list(
-      border = "1px solid #d6d2ee",
-      borderRadius = "6px"
+      border = "1px solid #c9c3e5",
+      borderRadius = "8px",
+      padding = "6px"
+    ),
+
+    paginationStyle = list(
+      marginTop = "18px"
     )
   )
 )
