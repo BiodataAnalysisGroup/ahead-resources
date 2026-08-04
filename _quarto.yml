@@ -5,7 +5,7 @@ website:
   title: "AHEAD Database"
   navbar:
     background: "#5544cc"
-    left:
+    center:
       - href: qmd/index.qmd
         text: Home
       - href: qmd/indicators.qmd
