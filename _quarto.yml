@@ -1,6 +1,8 @@
 project:
   type: website
+  
 search: false
+
 website:
   title: "AHEAD Database"
   navbar:
