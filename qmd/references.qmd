@@ -1,46 +1,179 @@
 ---
 title: "References"
+page-layout: full
 execute:
   echo: false
   warning: false
   message: false
 ---
 
-About this site
+Explore the references associated with the AHEAD indicators. Use the search box and column filters to find publications, guidelines, and other resources.
 
 ```{r}
-
 invisible(
   suppressWarnings(
     suppressMessages({
       library(data.table)
       library(rjson)
       library(reactable)
+      library(htmltools)
     })
   )
 )
 
-
 references_dir <- "../references/"
 
-fls <- references_dir |> list.files(full.names = TRUE, pattern = "json") 
+fls <- list.files(
+  references_dir,
+  full.names = TRUE,
+  pattern = "\\.json$"
+)
 
-references_dt <- list()
+references_dt <- vector("list", length(fls))
 
-for(i in seq_along(fls)) {
+for (i in seq_along(fls)) {
 
-    json_data <- fls[i] |>
-        readLines() |>
-        paste(collapse = "") |>
-        fromJSON()
+  json_data <- fls[i] |>
+    readLines(warn = FALSE) |>
+    paste(collapse = "") |>
+    fromJSON()
 
-    json_data$Indicator <- json_data$Indicator |> paste(collapse = ", ")
+  json_data$Indicator <- paste(
+    json_data$Indicator,
+    collapse = ", "
+  )
 
-    references_dt[[i]] <- json_data
-
+  references_dt[[i]] <- json_data
 }
 
-references_dt <- references_dt |> rbindlist(idcol = "id", use.names = TRUE, fill = TRUE)
+references_dt <- rbindlist(
+  references_dt,
+  idcol = "id",
+  use.names = TRUE,
+  fill = TRUE
+)
 
-reactable(references_dt)
+reactable(
+  references_dt,
+
+  searchable = TRUE,
+  filterable = TRUE,
+  sortable = TRUE,
+  highlight = TRUE,
+  bordered = TRUE,
+  striped = FALSE,
+
+  fullWidth = TRUE,
+  compact = FALSE,
+
+  defaultPageSize = 15,
+  pageSizeOptions = c(10, 15, 25, 50),
+  paginationType = "jump",
+
+  defaultColDef = colDef(
+    resizable = TRUE,
+    minWidth = 150,
+
+    headerStyle = list(
+      background = "#f4f2ff",
+      color = "#30256f",
+      fontWeight = "700",
+      borderBottom = "3px solid #5544cc",
+      padding = "12px"
+    ),
+
+    style = list(
+      padding = "12px",
+      whiteSpace = "normal",
+      lineHeight = "1.45",
+      verticalAlign = "top"
+    )
+  ),
+
+  columns = list(
+
+    id = colDef(
+      name = "ID",
+      width = 70,
+      minWidth = 70,
+      align = "center",
+      sticky = "left",
+
+      headerStyle = list(
+        background = "#5544cc",
+        color = "white",
+        fontWeight = "700",
+        borderBottom = "3px solid #5544cc"
+      ),
+
+      style = list(
+        background = "white",
+        color = "#5544cc",
+        fontWeight = "700"
+      )
+    ),
+
+    Indicator = colDef(
+      name = "Indicators",
+      minWidth = 220,
+
+      style = list(
+        color = "#5544cc",
+        fontSize = "0.84rem"
+      )
+    ),
+
+    Link = colDef(
+      name = "Link",
+      minWidth = 120,
+
+      cell = function(value) {
+
+        if (
+          is.null(value) ||
+          length(value) == 0 ||
+          is.na(value) ||
+          value == ""
+        ) {
+          return("")
+        }
+
+        tags$a(
+          href = value,
+          target = "_blank",
+          rel = "noopener noreferrer",
+          "View reference"
+        )
+      }
+    )
+  ),
+
+  theme = reactableTheme(
+    borderColor = "#dedbea",
+    highlightColor = "#f4f2ff",
+    cellPadding = "10px 12px",
+
+    style = list(
+      fontFamily = "Comfortaa, sans-serif",
+      fontSize = "0.86rem"
+    ),
+
+    searchInputStyle = list(
+      width = "280px",
+      border = "1px solid #c9c3e5",
+      borderRadius = "8px",
+      padding = "9px 12px"
+    ),
+
+    selectStyle = list(
+      border = "1px solid #c9c3e5",
+      borderRadius = "8px",
+      padding = "6px"
+    ),
+
+    paginationStyle = list(
+      marginTop = "18px"
+    )
+  )
+)
 ```
