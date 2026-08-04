@@ -4,7 +4,8 @@ execute:
   echo: false
 ---
 
-About this site
+Explore the indicators collected by the AHEAD project. Use the search box or column filters to find resources by name, category or keyword.
+
 
 ```{r}
 library(data.table)
@@ -13,24 +14,31 @@ library(reactable)
 
 indicators_dir <- "../indicators/"
 
-fls <- indicators_dir |> list.files(full.names = TRUE, pattern = "json") 
+fls <- list.files(
+  indicators_dir,
+  full.names = TRUE,
+  pattern = "\\.json$"
+)
 
-indicators_dt <- list()
+indicators_dt <- lapply(fls, function(file) {
 
-for(i in seq_along(fls)) {
+  json_data <- file |>
+    readLines(warn = FALSE) |>
+    paste(collapse = "") |>
+    fromJSON()
 
-    json_data <- fls[i] |>
-        readLines() |>
-        paste(collapse = "") |>
-        fromJSON()
+  json_data$keywords <- paste(
+    json_data$keywords,
+    collapse = ", "
+  )
 
-    json_data$keywords <- json_data$keywords |> paste(collapse = ", ")
-
-    indicators_dt[[i]] <- json_data
-
-}
-
-indicators_dt <- indicators_dt |> rbindlist(idcol = "id", use.names = TRUE, fill = TRUE)
+  json_data
+}) |>
+  rbindlist(
+    idcol = "id",
+    use.names = TRUE,
+    fill = TRUE
+  )
 
 reactable(
   indicators_dt,
