@@ -7,7 +7,7 @@ execute:
   message: false
 ---
 
-Explore the references associated with the AHEAD indicators. Use the search box and column filters to find publications, guidelines, and other resources.
+Explore the references associated with the AHEAD indicators. Use the search box and column filters to find publications, guidelines and other resources.
 
 ```{r}
 invisible(
