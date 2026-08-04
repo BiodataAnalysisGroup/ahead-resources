@@ -17,7 +17,7 @@ website:
   page-footer:
     background: "#5544cc"
     left: |
-      Copyright 2026 Ahead | All Rights Reserved
+      Copyright 2026 AHEAD | All Rights Reserved
     right:
       - href: https://github.com/BiodataAnalysisGroup/ahead-resources
         icon: github

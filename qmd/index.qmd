@@ -4,9 +4,8 @@ title: " "
 
 ![ ](../images/Logo.svg){width="50%"}
 
-## AI for Health
+## Evaluation of AI Applications & Datasets for Health
 
-### Evaluation of Applications & Datasets
 
-*The ahead Project brings together global expertise to set the standards for trustworthy AI that protects quality healthcare for all.*
+*The AHEAD Project brings together global expertise to set the standards for trustworthy AI that protects quality healthcare for all.*
 
