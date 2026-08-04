@@ -32,5 +32,77 @@ for(i in seq_along(fls)) {
 
 indicators_dt <- indicators_dt |> rbindlist(idcol = "id", use.names = TRUE, fill = TRUE)
 
-reactable(indicators_dt)
+reactable(
+  indicators_dt,
+
+  searchable = TRUE,
+  filterable = TRUE,
+  sortable = TRUE,
+  striped = TRUE,
+  highlight = TRUE,
+  bordered = FALSE,
+
+  defaultPageSize = 10,
+  pageSizeOptions = c(10, 25, 50, 100),
+
+  paginationType = "jump",
+
+  defaultColDef = colDef(
+    resizable = TRUE,
+    minWidth = 120,
+    headerStyle = list(
+      background = "#5544cc",
+      color = "white",
+      fontWeight = "600",
+      borderBottom = "none"
+    ),
+    style = list(
+      padding = "12px",
+      whiteSpace = "normal",
+      lineHeight = "1.4"
+    )
+  ),
+
+  columns = list(
+    id = colDef(
+      name = "ID",
+      width = 70,
+      align = "center"
+    ),
+
+    keywords = colDef(
+      name = "Keywords",
+      minWidth = 220,
+      style = list(
+        color = "#5544cc",
+        fontSize = "0.85rem"
+      )
+    )
+  ),
+
+  theme = reactableTheme(
+    borderColor = "#e5e5e5",
+
+    stripedColor = "#f8f7ff",
+    highlightColor = "#eeeaff",
+
+    cellPadding = "10px 12px",
+
+    style = list(
+      fontFamily = "Comfortaa, sans-serif",
+      fontSize = "0.9rem"
+    ),
+
+    searchInputStyle = list(
+      border = "1px solid #d6d2ee",
+      borderRadius = "6px",
+      padding = "8px 12px"
+    ),
+
+    selectStyle = list(
+      border = "1px solid #d6d2ee",
+      borderRadius = "6px"
+    )
+  )
+)
 ```
