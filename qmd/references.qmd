@@ -26,25 +26,76 @@ references_dir <- "../references/"
 fls <- list.files(
   references_dir,
   full.names = TRUE,
-  pattern = "\\.json$"
+  pattern = "\\.json$",
+  ignore.case = TRUE
 )
 
-references_dt <- vector("list", length(fls))
+# Exclude template file
+template_files <- c(
+  "0_reference_template.json"
+)
 
-for (i in seq_along(fls)) {
+fls <- fls[
+  !tolower(basename(fls)) %in% tolower(template_files)
+]
 
-  json_data <- fls[i] |>
-    readLines(warn = FALSE) |>
-    paste(collapse = "") |>
-    fromJSON()
+if (length(fls) == 0L) {
+  stop("No reference JSON files found after excluding templates.")
+}
 
-  json_data$Indicator <- paste(
-    json_data$Indicator,
-    collapse = ", "
+# Columns displayed in the References table
+reference_fields <- c(
+  "Resource",
+  "Agency",
+  "Year",
+  "Responsible",
+  "Description",
+  "Type",
+  "Link",
+  "Dimension",
+  "Indicator",
+  "Code Available",
+  "Tool Available"
+)
+
+# Convert each field into one table cell.
+# Arrays such as Dimension and Indicator become comma-separated text.
+as_cell <- function(value) {
+  if (is.null(value) || length(value) == 0L) {
+    return(NA_character_)
+  }
+
+  values <- unlist(value, use.names = FALSE)
+
+  if (length(values) == 0L || all(is.na(values))) {
+    return(NA_character_)
+  }
+
+  paste(as.character(values[!is.na(values)]), collapse = ", ")
+}
+
+references_dt <- lapply(fls, function(file) {
+
+  json_data <- fromJSON(
+    paste(readLines(file, warn = FALSE), collapse = "\n")
   )
 
-  references_dt[[i]] <- json_data
-}
+  # Support both the new nested format and existing flat records.
+  if (!is.null(json_data$Observatory)) {
+    reference_data <- json_data$Observatory
+  } else {
+    reference_data <- json_data
+  }
+
+  row <- lapply(reference_fields, function(field) {
+    as_cell(reference_data[[field]])
+  })
+
+  names(row) <- reference_fields
+
+  as.data.table(row)
+})
+
 
 references_dt <- rbindlist(
   references_dt,
