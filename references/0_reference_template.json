@@ -1,3 +1,74 @@
 {
-
+  "Observatory": {
+    "Resource": null,
+    "Agency": null,
+    "Year": null,
+    "Responsible": null,
+    "Description": null,
+    "Type": null,
+    "Link": null,
+    "Dimension": [],
+    "Indicator": [],
+    "Code Available": null,
+    "Tool Available": null
+  },
+  "OpenAlex": {
+    "OpenAlex ID": null,
+    "DOI": null,
+    "PMID": null,
+    "Title": null,
+    "Authors": [],
+    "Institutions": [],
+    "Journal / Source": null,
+    "Publication Year": null,
+    "Publication Date": null,
+    "Type": null,
+    "Language": null,
+    "Abstract": null,
+    "Topics": [],
+    "Keywords": [],
+    "Citation Count": null,
+    "Open Access": {
+      "Is Open Access": null,
+      "Status": null,
+      "Open Access URL": null
+    },
+    "License": null,
+    "Link": null,
+    "Retrieved On": null
+  },
+  "BIP": {
+    "Record ID": null,
+    "DOI": null,
+    "Popularity": null,
+    "Influence": null,
+    "Impulse": null,
+    "Link": null,
+    "Release": null,
+    "Retrieved On": null
+  },
+  "PubMed": {
+    "PMID": null,
+    "PMCID": null,
+    "DOI": null,
+    "Title": null,
+    "Authors": [],
+    "Affiliations": [],
+    "Journal": null,
+    "Journal Abbreviation": null,
+    "ISSN": [],
+    "Publication Year": null,
+    "Publication Date": null,
+    "Volume": null,
+    "Issue": null,
+    "Pages / Article Number": null,
+    "Publication Types": [],
+    "Language": [],
+    "Abstract": null,
+    "Keywords": [],
+    "MeSH Terms": [],
+    "Link": null,
+    "Full Text Links": [],
+    "Retrieved On": null
+  }
 }
