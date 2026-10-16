@@ -5,11 +5,17 @@ execute:
   echo: false
   warning: false
   message: false
+format:
+  html:
+    grid:
+      body-width: 1600px
 ---
 
 Explore the references associated with the AHEAD indicators. Use the search box and column filters to find publications, guidelines and other resources.
 
 ```{r}
+#| column: screen-inset
+
 invisible(
   suppressWarnings(
     suppressMessages({
@@ -104,7 +110,7 @@ references_dt <- rbindlist(
   fill = TRUE
 )
 
-reactable(
+references_table <- reactable(
   references_dt,
 
   searchable = TRUE,
@@ -123,7 +129,7 @@ reactable(
 
   defaultColDef = colDef(
     resizable = TRUE,
-    minWidth = 150,
+    minWidth = 120,
 
     headerStyle = list(
       background = "#f4f2ff",
@@ -142,6 +148,51 @@ reactable(
   ),
 
   columns = list(
+    
+    Resource = colDef(
+      minWidth = 280,
+      maxWidth = 420
+      ),
+
+    Agency = colDef(
+      minWidth = 150,
+      maxWidth = 220
+    ),
+  
+    Year = colDef(
+      width = 85,
+      align = "center"
+    ),
+    
+    Responsible = colDef(
+      minWidth = 150,
+      maxWidth = 200
+    ),
+    
+    Description = colDef(
+      minWidth = 450,
+      maxWidth = 700
+    ),
+    
+    Type = colDef(
+      minWidth = 110,
+      maxWidth = 160
+    ),
+    
+    Dimension = colDef(
+      minWidth = 160,
+      maxWidth = 220
+    ),
+    
+    `Code Available` = colDef(
+      minWidth = 140,
+      maxWidth = 180
+    ),
+    
+    `Tool Available` = colDef(
+      minWidth = 140,
+      maxWidth = 180
+    ),
 
     id = colDef(
       name = "ID",
@@ -176,7 +227,7 @@ reactable(
 
     Link = colDef(
       name = "Link",
-      minWidth = 120,
+      minWidth = 140,
 
       cell = function(value) {
 
@@ -226,5 +277,62 @@ reactable(
       marginTop = "18px"
     )
   )
+)
+
+htmlwidgets::onRender(
+  references_table,
+  "
+  function(el, x) {
+    requestAnimationFrame(function() {
+      const table = el.querySelector('.rt-table');
+      if (!table) return;
+
+      const topScroll = document.createElement('div');
+      topScroll.style.cssText =
+        'overflow-x:auto; overflow-y:hidden; height:20px;' +
+        'margin-bottom:8px; width:100%;';
+
+      topScroll.tabIndex = 0;
+      topScroll.setAttribute('role', 'region');
+      topScroll.setAttribute(
+        'aria-label',
+        'Horizontal scrollbar for references table'
+      );
+
+      const spacer = document.createElement('div');
+      spacer.style.height = '1px';
+      topScroll.appendChild(spacer);
+
+      table.parentNode.insertBefore(topScroll, table);
+
+      function updateWidth() {
+        spacer.style.width = table.scrollWidth + 'px';
+        topScroll.style.display =
+          table.scrollWidth > table.clientWidth ? 'block' : 'none';
+        topScroll.scrollLeft = table.scrollLeft;
+      }
+
+      topScroll.addEventListener('scroll', function() {
+        if (table.scrollLeft !== topScroll.scrollLeft) {
+          table.scrollLeft = topScroll.scrollLeft;
+        }
+      });
+
+      table.addEventListener('scroll', function() {
+        if (topScroll.scrollLeft !== table.scrollLeft) {
+          topScroll.scrollLeft = table.scrollLeft;
+        }
+      });
+
+      const observer = new ResizeObserver(updateWidth);
+      observer.observe(table);
+
+      const content = table.querySelector('.rt-thead');
+      if (content) observer.observe(content);
+
+      updateWidth();
+    });
+  }
+  "
 )
 ```
